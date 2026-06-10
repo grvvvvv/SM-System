@@ -1,1 +1,1 @@
-S1001|1234|Gaurav|11|A|1
+S1001|student123|Gaurav Kalita|10-10-2008|305606652900|9395529720|Salt Brook Senior Secondary School|12|B|86|Munindra Kalita

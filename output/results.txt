@@ -1,0 +1,5 @@
+S1001|English|85
+S1001|Physics|92
+S1001|Chemistry|88
+S1001|Mathematics|95
+S1001|Computer Science|97

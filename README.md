@@ -10,15 +10,15 @@ SUPER ADMIN
 
 ├── View Principals ✅
 
-├── Delete School ⬜
+├── Delete School ✅
 
-├── Edit School ⬜
+├── Edit School ✅
 
-├── Global Notification ⬜
+├── Global Notification ✅
 
-├── Remove Principal ⬜
+├── Remove Principal ✅
 
-└── Logout ⬜
+└── Logout ✅
 ************************
 
 
@@ -35,93 +35,93 @@ PRINCIPAL
 
 ├── Logout (menu option) ✅
 
-├── Remove Teacher ⬜
+├── Remove Teacher ✅
 
-├── Edit Teacher ⬜
+├── Edit Teacher ✅
 
-├── View Students ⬜
+├── View Students ✅
 
-├── View Attendance ⬜
+├── View Attendance ✅
 
-├── View Results ⬜
+├── View Results ✅
 
-├── View Complaints ⬜
+├── View Complaints ✅
 
-└── Send Notification ⬜
+└── Send Notification ✅
 ************************
 
 
 
 TEACHER
 
-├── Login ⬜
+├── Login ✅
 
-├── Dashboard ⬜
+├── Dashboard ✅
 
-├── Admit Student ⬜
+├── Admit Student ✅
 
-├── View Students ⬜
+├── View Students ✅
 
-├── Logout ⬜
+├── Logout ✅
 
-├── Mark Attendance ⬜
+├── Mark Attendance ✅
 
-├── View Attendance ⬜
+├── View Attendance ✅
 
-├── Enter Results ⬜
+├── Enter Results ✅
 
-├── Update Results ⬜
+├── Update Results ✅
 
-├── Complaint To Parent ⬜
+├── Complaint To Parent ✅
 
-├── Request Student Removal ⬜
+├── Request Student Removal ✅
 
-└── Send Notification ⬜
+└── Send Notification ✅
 ************************
 
 
 STUDENT
 
-├── Login ⬜
+├── Login ✅
 
-├── Dashboard ⬜
+├── Dashboard ✅
 
-├── View Profile ⬜
+├── View Profile ✅
 
-├── View Attendance ⬜
+├── View Attendance ✅
 
-├── View Results ⬜
+├── View Results ✅
 
-├── View Fees ⬜
+├── View Fees ✅
 
-├── View Notifications ⬜
+├── View Notifications ✅
 
-└── Logout ⬜
+└── Logout ✅
 ************************
 
 
 
 PARENT
 
-├── Login ⬜
+├── Login ✅
 
-├── Dashboard ⬜
+├── Dashboard ✅
 
-├── View Student Profile ⬜
+├── View Student Profile ✅
 
-├── View Attendance ⬜
+├── View Attendance ✅
 
-├── View Results ⬜
+├── View Results ✅
 
-├── View Fees ⬜
+├── View Fees ✅
 
-├── View Notifications ⬜
+├── View Notifications ✅
 
-├── Submit Complaint ⬜
+├── Submit Complaint ✅
 
-├── Leave School Request ⬜
+├── Leave School Request ✅
 
-└── Logout ⬜
+└── Logout ✅
 ************************
 
 
@@ -133,22 +133,22 @@ FILES
 
 ├── teachers.txt ✅
 
-├── students.txt ⬜
+├── students.txt ✅
 
-├── parents.txt ⬜
+├── parents.txt ✅
 
-├── attendance.txt ⬜
+├── attendance.txt ✅
 
-├── results.txt ⬜
+├── results.txt ✅
 
-├── fees.txt ⬜
+├── fees.txt ✅
 
-├── notifications.txt ⬜
+├── notifications.txt ✅
 
-├── complaints.txt ⬜
+├── complaints.txt ✅
 
-├── leave_requests.txt ⬜
+├── leave_requests.txt ✅
 
-└── removal_requests.txt ⬜
+└── removal_requests.txt ✅
 
 ************************

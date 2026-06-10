@@ -98,11 +98,126 @@ void viewTeachers()
 
 void displayMenu()
 {
-    cout << "\n===== PRINCIPAL PANEL =====\n";
+    int choice;
 
-    cout << "1. Add Teacher\n";
-    cout << "2. View Teachers\n";
-    cout << "3. Logout\n";
+    while(true)
+    {
+        cout << "\n===== PRINCIPAL PANEL =====\n";
+
+        cout << "1. Add Teacher\n";
+        cout << "2. View Teachers\n";
+        cout << "3. Search Teacher\n";
+        cout << "4. Remove Teacher\n";
+        cout << "5. View Students\n";
+        cout << "6. View Attendance\n";
+        cout << "7. View Results\n";
+        cout << "8. View Complaints\n";
+        cout << "9. View Removal Requests\n";
+        cout << "10. Send Notification\n";
+        cout << "11. Logout\n";
+
+        cout << "\nEnter Choice: ";
+        cin >> choice;
+        cin.ignore();
+
+        switch(choice)
+        {
+            case 1: addTeacher(); break;
+            case 2: viewTeachers(); break;
+            case 3: searchTeacher(); break;
+            case 4: removeTeacher(); break;
+            case 5: viewStudents(); break;
+            case 6: viewAttendance(); break;
+            case 7: viewResults(); break;
+            case 8: viewComplaints(); break;
+            case 9: viewRemovalRequests(); break;
+            case 10: sendNotification(); break;
+            case 11: return;
+
+            default:
+                cout << "\nInvalid Choice!\n";
+        }
+    }
+}
+
+void sendNotification()
+{
+    string message;
+
+    cout << "\nEnter Notification: ";
+
+    getline(cin >> ws, message);
+
+    FileManager::saveNotification(message);
+
+    cout << "\nNotification Sent Successfully!\n";
+}
+void viewComplaints()
+{
+    cout << "\n===== COMPLAINTS =====\n";
+
+    FileManager::loadComplaints();
+}
+void viewLeaveRequests()
+{
+    cout << "\n===== LEAVE REQUESTS =====\n";
+
+    FileManager::loadLeaveRequests();
+}
+void viewStudents()
+{
+    cout << "\n===== ALL STUDENTS =====\n";
+
+    FileManager::loadStudents();
+}
+void viewAttendance()
+{
+    cout << "\n===== ATTENDANCE RECORDS =====\n";
+
+    FileManager::loadAttendance();
+}
+void viewResults()
+{
+    cout << "\n===== RESULT RECORDS =====\n";
+
+    FileManager::loadResults();
+}
+void searchTeacher()
+{
+    string id;
+
+    cout << "\nEnter Teacher ID: ";
+    getline(cin >> ws, id);
+
+    cout << "\n===== SEARCH RESULT =====\n";
+
+    if(!FileManager::searchTeacher(id))
+    {
+        cout << "Teacher Not Found!\n";
+    }
+}
+void removeTeacher()
+{
+    string teacherID;
+
+    cout << "\nEnter Teacher ID to Remove: ";
+    getline(cin >> ws, teacherID);
+
+    FileManager::removeTeacher(teacherID);
+
+    cout << "\nTeacher Removed Successfully!\n";
+}
+void viewRemovalRequests()
+{
+    cout << "\n===== REMOVAL REQUESTS =====\n";
+
+    FileManager::loadRemovalRequests();
+}
+bool login(string id, string password)
+{
+    return FileManager::verifyPrincipalLogin(
+        id,
+        password);
 }
 
 };

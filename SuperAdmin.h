@@ -26,16 +26,44 @@ public:
     }
 
     void displayMenu()
-    {
-        cout << "\n===== SUPER ADMIN PANEL =====" << endl;
+{
+    int choice;
 
-        cout << "1. Create School" << endl;
-        cout << "2. Delete School" << endl;
-        cout << "3. Set Principal" << endl;
-        cout << "4. View All Schools" << endl;
-        cout << "5. Global Notification" << endl;
-        cout << "6. Exit" << endl;
+    while(true)
+    {
+        cout << "\n===== SUPER ADMIN PANEL =====\n";
+
+        cout << "1. Create School\n";
+        cout << "2. View Schools\n";
+        cout << "3. Add Principal\n";
+        cout << "4. View Principals\n";
+        cout << "5. Delete School\n";
+        cout << "6. Remove Principal\n";
+        cout << "7. Edit School\n";
+        cout << "8. Global Notification\n";
+        cout << "9. Logout\n";
+
+        cout << "\nEnter Choice: ";
+        cin >> choice;
+        cin.ignore();
+
+        switch(choice)
+        {
+            case 1: createSchool(); break;
+            case 2: viewSchools(); break;
+            case 3: addPrincipal(); break;
+            case 4: viewPrincipals(); break;
+            case 5: deleteSchool(); break;
+            case 6: removePrincipal(); break;
+            case 7: editSchool(); break;
+            case 8: globalNotification(); break;
+            case 9: return;
+
+            default:
+                cout << "\nInvalid Choice!\n";
+        }
     }
+}
 
 void createSchool()
 {
@@ -127,6 +155,59 @@ void viewPrincipals()
     cout << "\n===== ALL PRINCIPALS =====\n";
 
     FileManager::loadPrincipals();
+}
+void removePrincipal()
+{
+    string principalID;
+
+    cout << "\nEnter Principal ID to Remove: ";
+
+    getline(cin >> ws, principalID);
+
+    FileManager::removePrincipal(principalID);
+
+    cout << "\nPrincipal Removed Successfully!\n";
+}
+void deleteSchool()
+{
+    string schoolName;
+
+    cout << "\nEnter School Name to Delete: ";
+
+    getline(cin >> ws, schoolName);
+
+    FileManager::deleteSchool(schoolName);
+
+    cout << "\nSchool Deleted Successfully!\n";
+}
+void globalNotification()
+{
+    string message;
+
+    cout << "\nEnter Global Notification: ";
+
+    getline(cin >> ws, message);
+
+    FileManager::saveNotification(message);
+
+    cout << "\nGlobal Notification Sent!\n";
+}
+void editSchool()
+{
+    string oldName;
+    string newName;
+
+    cout << "\nEnter Old School Name: ";
+    getline(cin >> ws, oldName);
+
+    cout << "Enter New School Name: ";
+    getline(cin, newName);
+
+    FileManager::editSchool(
+        oldName,
+        newName);
+
+    cout << "\nSchool Updated Successfully!\n";
 }
 
 };
