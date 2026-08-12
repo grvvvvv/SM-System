@@ -11,17 +11,6 @@
 
 using namespace std;
 
-// ============================================================
-// SCHOOL MANAGEMENT SYSTEM - SINGLE FILE VERSION
-// ============================================================
-// IDs are generated automatically:
-// School    -> SC001
-// Principal -> PR001
-// Teacher   -> TE001
-// Student   -> ST001
-// Parent    -> PA001
-// ============================================================
-
 namespace SMS {
 
 const string BACK = "back";
@@ -54,7 +43,6 @@ bool isExit(const string& s) {
     return lowerCopy(s) == EXIT;
 }
 
-// Reads a text field. "back" cancels the current operation.
 bool inputText(const string& prompt, string& value, bool allowEmpty = false) {
     while (true) {
         cout << prompt;
@@ -70,7 +58,6 @@ bool inputText(const string& prompt, string& value, bool allowEmpty = false) {
     }
 }
 
-// Safe integer input. It never leaves cin in a failed state.
 bool inputInt(const string& prompt, int& value, int minValue = numeric_limits<int>::min(),
               int maxValue = numeric_limits<int>::max()) {
     while (true) {
@@ -131,7 +118,6 @@ void invalidChoice() {
     pauseScreen();
 }
 
-// Returns true if menu should continue, false if caller should go back/exit.
 bool menuChoice(const string& prompt, int& choice, int minChoice, int maxChoice) {
     while (true) {
         cout << prompt;
@@ -276,7 +262,6 @@ public:
         return updated;
     }
 
-    // ---- Save ----
     static bool saveSchool(const string& data) { return append("schools.txt", data); }
     static bool savePrincipal(const string& data) { return append("principals.txt", data); }
     static bool saveTeacher(const string& data) { return append("teachers.txt", data); }
@@ -290,7 +275,6 @@ public:
     static bool saveLeaveRequest(const string& data) { return append("leave_requests.txt", data); }
     static bool saveRemovalRequest(const string& data) { return append("removal_requests.txt", data); }
 
-    // ---- Load ----
     static void load(const string& fileName) {
         vector<string> lines = readAll(fileName);
         if (lines.empty()) {
@@ -312,7 +296,6 @@ public:
     static void loadLeaveRequests() { load("leave_requests.txt"); }
     static void loadRemovalRequests() { load("removal_requests.txt"); }
 
-    // ---- Login ----
     static bool verifyLogin(const string& fileName, const string& id, const string& password) {
         string line;
         if (!findByID(fileName, id, line)) return false;
@@ -372,17 +355,14 @@ public:
     }
 
     static string getTeacherSchoolID(const string& teacherID) {
-        // TEID|password|name|dob|aadhar|phone|schoolID|subject
         return getField("teachers.txt", teacherID, 6);
     }
 
     static string getPrincipalSchoolID(const string& principalID) {
-        // PRID|password|name|dob|aadhar|phone|schoolID
         return getField("principals.txt", principalID, 6);
     }
 
     static string getStudentSchoolID(const string& studentID) {
-        // STID|password|name|dob|aadhar|phone|schoolID|class|section|roll|parent
         return getField("students.txt", studentID, 6);
     }
 
@@ -691,7 +671,7 @@ public:
 }
 
     void displayMenu() {
-        // ID is entered at login. Re-read its school link for security.
+       
         schoolID = FileManager::getTeacherSchoolID(id);
 
         while (true) {
@@ -734,7 +714,6 @@ private:
         cout << "School: " << FileManager::getSchoolName(schoolID)
              << " [" << schoolID << "]\n\n";
 
-        // Student ID is generated automatically.
         string studentID = FileManager::nextID("students.txt", "ST");
         string password, name, dob, aadhar, phone, parentName;
         int classNo, rollNo;
@@ -751,8 +730,6 @@ private:
         section = static_cast<char>(toupper(static_cast<unsigned char>(section)));
         if (!inputInt("Enter Roll Number (or back): ", rollNo, 1)) return;
         if (!inputText("Enter Parent Name (or back): ", parentName)) return;
-
-        // School ID is automatically linked to the teacher's school.
         string studentData = studentID + "|" + password + "|" + name + "|" + dob + "|" +
                              aadhar + "|" + phone + "|" + schoolID + "|" +
                              to_string(classNo) + "|" + string(1, section) + "|" +
@@ -968,7 +945,6 @@ private:
         if (!inputText("Enter Phone (or back): ", phone)) return;
         if (!inputText("Enter Subject (or back): ", subject)) return;
 
-        // School ID is automatically taken from logged-in principal.
         string data = teacherID + "|" + password + "|" + name + "|" + dob + "|" +
                       aadhar + "|" + phone + "|" + schoolID + "|" + subject;
 
@@ -1136,7 +1112,6 @@ private:
         if (!inputInt("Enter Total Classes (or back): ", totalClasses, 1)) return;
         if (!inputInt("Enter Total Sections (or back): ", totalSections, 1)) return;
 
-        // Principal ID starts empty; it is linked when a principal is created.
         string data = schoolID + "|" + schoolName + "||" +
                       to_string(totalClasses) + "|" + to_string(totalSections);
 
@@ -1189,7 +1164,7 @@ private:
             return;
         }
 
-        // Update school record with principal ID.
+        
         string schoolLine;
         if (FileManager::findByID("schools.txt", schoolID, schoolLine)) {
             vector<string> f = FileManager::split(schoolLine);
@@ -1227,7 +1202,7 @@ private:
 
         string schoolID = FileManager::getPrincipalSchoolID(principalID);
         if (FileManager::removeByID("principals.txt", principalID)) {
-            // Clear principal ID from the linked school.
+
             string schoolLine;
             if (FileManager::findByID("schools.txt", schoolID, schoolLine)) {
                 vector<string> f = FileManager::split(schoolLine);
@@ -1309,7 +1284,7 @@ private:
     }
 };
 
-} // namespace SMS
+}
 
 using namespace SMS;
 
